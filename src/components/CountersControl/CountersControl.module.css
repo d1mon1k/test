@@ -1,0 +1,9 @@
+.countersControl {
+  margin: 0 0 30px 0;
+  user-select: none;
+}
+
+.btnsPrimaryRow {
+  display: flex;
+  justify-content: center;
+}

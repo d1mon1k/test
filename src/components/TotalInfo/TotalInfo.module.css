@@ -1,0 +1,11 @@
+.info {
+  margin: 0 0 25px 0;
+  padding: 8px 15px;
+  border: 2px solid #000;
+  transition: all 0.1s linear;
+}
+
+.info:hover {
+  box-shadow: -8px 8px;
+  transform: translate(8px, -8px);
+}

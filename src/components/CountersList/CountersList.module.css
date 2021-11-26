@@ -1,0 +1,18 @@
+.countersGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(auto, 1fr));
+  grid-gap: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .countersGrid {
+    grid-template-columns: repeat(2, minmax(auto, 1fr));
+    grid-gap: 25px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .countersGrid {
+    grid-template-columns: repeat(1, minmax(auto, 1fr));
+  }
+}

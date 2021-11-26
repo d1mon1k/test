@@ -1,32 +1,35 @@
-import React, { useState } from "react";
-import Counter from "./components/Counter";
-import CountersControl from "./components/CountersControl";
+import React, { useMemo, useState } from "react";
+import CountersControl from "./components/CountersControl/CountersControl";
+import CountersList from "./components/CountersList/CountersList";
 
 const App = () => {
-  const [counters, setCounters] = useState([
-    { id: 1, score: 0, isEvent: true },
-    { id: 2, score: 0, isEvent: true },
-    { id: 3, score: 0, isEvent: true },
-    { id: 4, score: 0, isEvent: true },
-  ]);
+  const [counters, setCounters] = useState([]);
 
-  const countersList = counters.map((counter, index) => {
-    return (
-      <Counter
-        key={counter.id}
-        counter={counter}
-        counterIndex={index}
-        counters={counters}
-        setCounters={setCounters}
-      />
-    );
+  const [countersInfo, setCountersInfo] = useState({
+    countersAmount: 0,
+    totalScore: 0,
   });
+
+  useMemo(() => {
+    const countersInfoClone = {
+      countersAmount: counters.length,
+      totalScore: 0,
+    };
+    countersInfoClone.totalScore = counters.reduce((acc, currCounter) => {
+      return acc + currCounter.score;
+    }, 0);
+    setCountersInfo(countersInfoClone);
+  }, [counters]);
 
   return (
     <>
       <div className="App">
-        <CountersControl setCounters={setCounters} counters={counters} />
-        <ul className="counters-grid">{countersList}</ul>
+        <CountersControl
+          countersInfo={countersInfo}
+          counters={counters}
+          setCounters={setCounters}
+        />
+        <CountersList setCounters={setCounters} counters={counters} />
       </div>
     </>
   );
