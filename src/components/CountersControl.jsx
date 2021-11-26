@@ -2,7 +2,7 @@ import React from "react";
 
 const CountersControl = (props) => {
   const onClickHandler = () => {
-    const newCounter = { score: 0, isEven: true };
+    const newCounter = { id: Date.now(), score: 0, isEven: true };
     props.setCounters([newCounter, ...props.counters]);
   };
 

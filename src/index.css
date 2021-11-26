@@ -9,6 +9,12 @@ body {
   font-size: 20px;
 }
 
+ul,
+ol {
+  list-style-type: none;
+  padding: 0;
+}
+
 .App {
   margin: 0 auto;
   padding: 20px 15px;
