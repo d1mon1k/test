@@ -1,0 +1,17 @@
+.counter-enter {
+  opacity: 0;
+}
+
+.counter-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.counter-exit {
+  opacity: 1;
+}
+
+.counter-exit-active {
+  opacity: 0;
+  transition: all 500ms ease-in;
+}

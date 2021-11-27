@@ -1,6 +1,8 @@
 import React from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Counter from "../Counter/Counter";
 import cl from "./CountersList.module.css";
+import "./animation.css";
 
 const decreaseOddCounters = (counters) => {
   const countersArr = counters.map((counter) => {
@@ -52,19 +54,24 @@ const CountersList = ({ counters, setCounters }) => {
     setCounters(newCountersArr);
   };
 
-  const countersList = counters.map((counter, index) => {
-    return (
-      <Counter
-        key={counter.id}
-        increaseOnClick={increaseOnClick}
-        decreaseOnClick={decreaseOnClick}
-        resetOnClick={resetOnClick}
-        deleteOnClick={deleteOnClick}
-        counterIndex={index}
-        counters={counters}
-      />
-    );
-  });
+  const countersList = (
+    <TransitionGroup component={null}>
+      {counters.map((counter, index) => {
+        return (
+          <CSSTransition key={counter.id} timeout={500} classNames="counter">
+            <Counter
+              increaseOnClick={increaseOnClick}
+              decreaseOnClick={decreaseOnClick}
+              resetOnClick={resetOnClick}
+              deleteOnClick={deleteOnClick}
+              counterIndex={index}
+              counters={counters}
+            />
+          </CSSTransition>
+        );
+      })}
+    </TransitionGroup>
+  );
 
   return <ul className={cl.countersGrid}>{countersList}</ul>;
 };

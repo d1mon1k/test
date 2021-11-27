@@ -18,7 +18,7 @@ const CountersControl = ({ countersInfo, counters, setCounters }) => {
   const addCounterOnClick = () => {
     const increasedCountersArray = increaseEvenCounters(counters);
     const newCounter = { id: Date.now(), score: 0, isEven: true };
-    setCounters([newCounter, ...increasedCountersArray]);
+    setCounters([ ...increasedCountersArray, newCounter]);
   };
 
   const resetOnClick = () => {
